@@ -36,16 +36,17 @@ $x_i^2=\frac{\hat x^2}{2}\times\div\int^{+\infty}_{-\infty}xdx\sum^0_{i=+\infty}
 
 # 引用
 **文字引用**
-> 力拔山兮气盖世，时不利兮骓不逝，骓不逝兮可奈何，虞兮虞兮奈若何！
+> 力拔山兮气盖世，时不利兮骓不逝，骓不逝兮可奈何，虞兮虞兮奈若何！  
 > ---楚 项羽   
 
-**图片引用** 
-![萧何月下追韩信](%E8%90%A7%E4%BD%95%E6%9C%88%E4%B8%8B%E8%BF%BD%E9%9F%A9%E4%BF%A1.jpeg) 
-**脚注引用** **NO FUNCTION IN VSCODE**
+**图片引用**   
+![萧何月下追韩信](%E8%90%A7%E4%BD%95%E6%9C%88%E4%B8%8B%E8%BF%BD%E9%9F%A9%E4%BF%A1.jpeg)   
+**脚注引用** **NO FUNCTION IN VSCODE**  
 资本主义!^[资本主义]  
 [^资本主义]:1321  
-[百度][id]
+[百度][id]  
 [id]:baidu.com"搜索"  
+  
 **文字链接**  
 [百度搜索](https://www.baidu.com)
 ### 可以使用的HTML标签
