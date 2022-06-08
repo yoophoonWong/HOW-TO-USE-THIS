@@ -20,7 +20,7 @@ git clone 仓库地址
 
 ---
 ### 已有空库，推送项目上去
-git init
-git remote add origin "仓库地址"
-git push -u origin "仓库分支"  
+git init //初始化仓库  
+git remote add origin "仓库地址"  //添加远程仓库  
+git push -u origin "仓库分支"  //推送  
 
