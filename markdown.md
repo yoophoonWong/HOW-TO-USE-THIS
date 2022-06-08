@@ -46,7 +46,7 @@ $x_i^2=\frac{\hat x^2}{2}\times\div\int^{+\infty}_{-\infty}xdx\sum^0_{i=+\infty}
 [^资本主义]:1321  
 [百度][id]  
 [id]:baidu.com"搜索"  
-  
+
 **文字链接**  
 [百度搜索](https://www.baidu.com)
 ### 可以使用的HTML标签
