@@ -19,17 +19,16 @@ gitee→设置→安全设置→ssh公钥
 `git clone` 仓库地址
 
 ---
-### 6、已有空库，推送项目上去
+### 6、已有空库，推送项目上去  
 `git init` //初始化仓库  
 `git remote add origin` "仓库地址"  //添加远程仓库  
 `git push -u origin` "仓库分支"  //推送  
 
-### 7、分支相关
+### 7、分支相关  
 `git checkout -b newBranch` 在创建``newBranch分支并切换到新分支  
-上面命令实际是下面命令的简化版
-`git branch newBranch`
-`git checkout newBranch`
-
-### 8、查看当前文件夹的仓库
-`git remote -v` //显示拉取、推送的地址
-`git remote show origin` //显示更多的信息
+上面命令实际是下面命令的简化版  
+`git branch newBranch`  
+`git checkout newBranch`    
+### 8、查看当前文件夹的仓库  
+`git remote -v` //显示拉取、推送的地址  
+`git remote show origin` //显示更多的信息  
