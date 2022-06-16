@@ -32,3 +32,12 @@ gitee→设置→安全设置→ssh公钥
 ### 8、查看当前文件夹的仓库  
 `git remote -v` //显示拉取、推送的地址  
 `git remote show origin` //显示更多的信息  
+
+### 9、克隆仓库到非空文件夹  
+```POWERSHELL
+//1、克隆仓库到任意文件夹
+git clone --no-checkout https://git.oschina.NET/NextApp/platform.git anyFolder
+//2、复制`.git`到目标非空文件夹
+//3、设置git信息 注意查看仓库地址
+git reset --hard HEAD
+```
