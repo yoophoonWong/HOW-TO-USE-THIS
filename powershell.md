@@ -4,3 +4,6 @@
 >路劲为 **C:\Users\UserName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1**  
 
 2、管理员启动PowerShell执行命令`set-executionpolicy remotesigned` 选择是  **Y** 即可  
+
+# 更改PowerShell的字符编码
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8nobom' //设置字符集为UTF-8
