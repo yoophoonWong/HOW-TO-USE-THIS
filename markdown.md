@@ -47,8 +47,8 @@ Ctrl+Shift+]    → 提升文字级别
 - 李四
 - 王五
 # 3. 清单 ***NO FUNCTION IN VSCODE***
--[ ] 起床  
--[ ] 吃饭
+- [ ] 起床  
+- [ ] 吃饭
 # 4. 代码块
 ``` javascript
 var name = `张三`
