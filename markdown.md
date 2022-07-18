@@ -1,17 +1,3 @@
----
-Markdown All in One: Create Table of Contents
-Markdown All in One: Update Table of Contents
-Markdown All in One: Add/Update section numbers
-Markdown All in One: Remove section numbers
-Markdown All in One: Toggle code span
-Markdown All in One: Toggle code block
-Markdown All in One: Print current document to HTML
-Markdown All in One: Print documents to HTML
-Markdown All in One: Toggle math environment
-Markdown All in One: Toggle list
-It will cycle through list markers (-, *, +, 1. and 1))
----
-
 - [1. markdown](#1-markdown)
 - [2. 列表](#2-列表)
   - [2.1. 有序列表](#21-有序列表)
@@ -22,13 +8,6 @@ It will cycle through list markers (-, *, +, 1. and 1))
 - [6. 表格](#6-表格)
 - [7. 引用](#7-引用)
   - [7.1. 可以使用的HTML标签](#71-可以使用的html标签)
-- [8. 引用](#8-引用)
-- [9. 引用](#9-引用)
-- [10. 引用](#10-引用)
-- [11. 引用](#11-引用)
-- [12. 引用](#12-引用)
-  - [12.1. 引用](#121-引用)
-- [13. 引用](#13-引用)
 # 1. markdown
  
 Ctrl+B          → **粗体**  
@@ -70,7 +49,7 @@ $x_i^2=\frac{\hat x^2}{2}\times\div\int^{+\infty}_{-\infty}xdx\sum^0_{i=+\infty}
 > ---楚 项羽   
 
 **图片引用**   
-![萧何月下追韩信](%E8%90%A7%E4%BD%95%E6%9C%88%E4%B8%8B%E8%BF%BD%E9%9F%A9%E4%BF%A1.jpeg)   
+![萧何月下追韩信](萧何月下追韩信.jpeg)   
 **脚注引用** **NO FUNCTION IN VSCODE**  
 资本主义!^[资本主义]  
 [^资本主义]:1321  
@@ -97,11 +76,3 @@ $x_i^2=\frac{\hat x^2}{2}\times\div\int^{+\infty}_{-\infty}xdx\sum^0_{i=+\infty}
 
 <hr>上下标问题  <br/>
 H<sub>2</sub>O和x<sup>2</sup>  
-
-# 8. 引用
-# 9. 引用
-# 10. 引用
-# 11. 引用
-# 12. 引用
-## 12.1. 引用
-# 13. 引用
