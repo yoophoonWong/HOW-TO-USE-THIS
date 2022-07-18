@@ -49,7 +49,8 @@ $x_i^2=\frac{\hat x^2}{2}\times\div\int^{+\infty}_{-\infty}xdx\sum^0_{i=+\infty}
 > ---楚 项羽   
 
 **图片引用**   
-![萧何月下追韩信](萧何月下追韩信.jpeg)   
+![萧何月下追韩信](xiaohezhuihanxin.jpeg)   
+![萧何月下追韩信](%E8%90%A7%E4%BD%95%E8%BF%BD%E9%9F%A9%E4%BF%A1.jpeg) 
 **脚注引用** **NO FUNCTION IN VSCODE**  
 资本主义!^[资本主义]  
 [^资本主义]:1321  
