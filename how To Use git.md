@@ -18,11 +18,14 @@ gitee→设置→安全设置→ssh公钥
 ### 5、克隆项目
 `git clone` 仓库地址
 
+
+### 6、提交项目
+git commit -m "comment" //提交  附带信息
 ---
 ### 6、已有空库，推送项目上去  
 `git init` //初始化仓库  
 `git remote add origin` "仓库地址"  //添加远程仓库  
-`git push -u origin` "仓库分支"  //推送  
+`git push -u origin` "仓库分支"  //推送 推送地址 推送分支  
 
 ### 7、分支相关  
 `git checkout -b "newBranch"` 在创建``newBranch分支并切换到新分支  
@@ -34,7 +37,7 @@ gitee→设置→安全设置→ssh公钥
 `git remote show origin` //显示更多的信息  
 
 ### 9、克隆仓库到非空文件夹  
-```POWERSHELL
+```s
 //1、克隆仓库到任意文件夹
 git clone --no-checkout https://git.oschina.NET/NextApp/platform.git anyFolder
 //2、复制`.git`到目标非空文件夹
