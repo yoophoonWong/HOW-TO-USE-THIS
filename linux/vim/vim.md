@@ -14,7 +14,7 @@ dw      delete word     删除当前单词
 diw     delete inner word   删除包含光标的单词
 di"     delete inner "      似乎是只有符号有效  字母无效
 daw     delete around word  
-dd                      删除当前行
+dd                     删除当前行
 x                       删除当前字符
 内容修改
         change          修改，字面意思 无快捷键
@@ -43,7 +43,6 @@ gg      move to file head
 G       move to file end
 CTRL+o  move to last position
 
-a test just a
 CTRL+F  forward 向下翻页
 CTRL+U  upward  向上翻页
 
