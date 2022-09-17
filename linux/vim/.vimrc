@@ -51,6 +51,7 @@ nmap <Space> :
 
 
 "插件安装
+"plug install进行插件的安装
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 call plug#end()
