@@ -8,7 +8,7 @@
 set nocompatible    "设置不兼容VI
 syntax on           "语法高亮
 filetype on         "检测文件类型
-set auto read       "文件改动后自动读取
+set autoread       "文件改动后自动读取
 
 
 set wildmenu        "开启命令模糊输入
