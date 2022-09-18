@@ -39,6 +39,9 @@ set relativenumber  "
 set cursorline      "
 set ruler           "
 
+"map
+map <silent> <C-e> :NERDTreeToggle<CR> "<silent>取消回显
+
 
 "imap    input mode map
 imap jk <Esc>
