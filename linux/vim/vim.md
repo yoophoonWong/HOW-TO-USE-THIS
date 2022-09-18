@@ -16,7 +16,7 @@ di"     delete inner "      似乎是只有符号有效  字母无效
 daw     delete around word  删除单词及附带的空格
 dd                     删除当前行
 x                       删除当前字符
-
+s/S       substitute    删除字符/行并进入插入模式
 
 内容修改
         change          修改，字面意思 无快捷键

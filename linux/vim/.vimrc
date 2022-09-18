@@ -40,7 +40,6 @@ set cursorline      "
 set ruler           "
 
 "map
-map <silent> <C-e> :NERDTreeToggle<CR> "<silent>取消回显
 
 
 "imap    input mode map
@@ -54,7 +53,8 @@ nmap <Space> :
 
 
 "插件安装
-"plug install进行插件的安装
+"plug install进行插件的安装@https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
+map <silent> <C-e> :NERDTreeToggle<CR> "<silent>取消回显
 call plug#end()
