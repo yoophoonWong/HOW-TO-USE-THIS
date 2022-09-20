@@ -6,7 +6,7 @@ docker run -d \
   -p 4000:80 \
   -v /path/to/dashy/my-local-conf.yml:/app/public/conf.yml \
   -v /path/to/dashy/icons:/app/public/item-icons/icons \
-  --name my-dashboard \
+  --name=my-dashboard \
   --restart=always \
   lissy93/dashy:latest
 ```

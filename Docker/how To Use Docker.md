@@ -12,6 +12,7 @@
   - [Docker的使用](#docker的使用)
     - [关于Docker Desktop的创建容器示例](#关于docker-desktop的创建容器示例)
     - [docker使用](#docker使用)
+      - [导出镜像](#导出镜像)
 # Notes For Docker
 ## 环境准备
 ### linux下的docker使用
@@ -87,3 +88,4 @@ docker run -d -p 80:80 --name docker-tutorial docker101tutorial
 docker run -d --name=xunlei --hostname=yoophoon --net=host -v /path/to/xunlei:/xunlei/data -v /path/to/downloads:/xunlei/downloads --restart=unless-stopped --privileged cnk3x/xunlei:latest
 
 ```
+#### 导出镜像
