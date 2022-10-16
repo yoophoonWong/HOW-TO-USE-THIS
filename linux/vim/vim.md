@@ -54,9 +54,10 @@ gg      move to file head
 G       move to file end
 CTRL+o  move to last position
 
-CTRL+F  forward 向下翻页
-CTRL+D          向下翻页
-CTRL+U  upward  向上翻页
+CTRL+F  forward         向下翻页（）
+CTRL+B  backward        向上翻页
+CTRL+D  PageDown        向下翻页
+CTRL+U  PageUp          向上翻页
 
 复制粘贴
 yy      yank    复制当前行

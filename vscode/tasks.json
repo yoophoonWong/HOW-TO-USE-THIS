@@ -4,7 +4,7 @@
     {
       "label": "echo",
       "type": "shell",
-      "command": "echo ${workspaceFolder}"
+      "command": "echo ${userHome}\\test"
     }
   ]
 }
