@@ -4,6 +4,11 @@
 "source ~/.bashrc
 "windows下在快捷方式引用地址加上对应的参数就好
 "
+
+
+
+
+
 "编辑器设置
 set nocompatible    "设置不兼容VI
 syntax on           "语法高亮
@@ -13,6 +18,10 @@ set guifont=Hack_Nerd_Font_Mono:h10
 set encoding=utf-8
 set fileencoding=utf-8
 "colorscheme onedarkpro
+winpos 100 100
+set lines=48 columns=210
+
+
 
 set wildmenu        "开启命令模糊输入
 set wildmode=longest:list,full  "模糊模式
@@ -58,6 +67,42 @@ nmap <Space> :
 "插件安装
 "plug install进行插件的安装@https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+"修改起始页内容(https://github.com/mhinz/vim-startify)
+"更多信息  :help startify
+Plug 'mhinz/vim-startify'
+"设置起始页面自定义字符画  ascii art
+let g:ascii = [
+\ '  ___    ___ ________  ________  ________  ___  ___  ________  ________  ________      ',
+\ ' |\  \  /  /|\   __  \|\   __  \|\   __  \|\  \|\  \|\   __  \|\   __  \|\   ___  \    ',
+\ ' \ \  \/  / \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\\  \ \  \|\  \ \  \|\  \ \  \\ \  \   ',
+\ '  \ \    / / \ \  \\\  \ \  \\\  \ \   ____\ \   __  \ \  \\\  \ \  \\\  \ \  \\ \  \  ',
+\ '   \/  /  /   \ \  \\\  \ \  \\\  \ \  \___|\ \  \ \  \ \  \\\  \ \  \\\  \ \  \\ \  \ ',
+\ ' __/  / /      \ \_______\ \_______\ \__\    \ \__\ \__\ \_______\ \_______\ \__\\ \__\',
+\ '|\___/ /        \|_______|\|_______|\|__|     \|__|\|__|\|_______|\|_______|\|__| \|__|',
+\ '\|___|/                                                                                '
+\ ]
+"每次运行startify都加载自定义字符画  + startify#fortune#boxed())
+let g:startify_custom_header =
+          \ 'startify#pad(g:ascii + startify#fortune#quote())'
+"初始页列表
+let g:startify_lists = [
+        \ { 'type': 'files',     'header': ['   文件']            },
+        \ { 'type': 'dir',       'header': ['   当前目录 '. getcwd()] },
+        \ { 'type': 'sessions',  'header': ['   会话']       },
+        \ { 'type': 'bookmarks', 'header': ['   书签']      },
+        \ { 'type': 'commands',  'header': ['   命令']       },
+        \ ]
+"自定义书签
+let g:startify_bookmarks = [
+        \ {'d': '~/Desktop/'},
+        \ ]
+"设置cowsay语句   提示未知函数无法设置
+"let g:startify_custom_header_quotes =
+"      \ startify#fortune#predefined_quotes() + [['somethingwrong', 'yes it is']]
+"将header/footer居中设置   这项设置只会cowsay有效 由于设置自定义字符画需要将header设置为boxed，所以注释该设置
+"let g:startify_custom_header =
+"          \ 'startify#center(startify#fortune#cowsay())'
+
 " 文件资源管理器
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'  "NERDTree显示git的状态
@@ -71,7 +116,7 @@ let g:NERDTreeShowHidden=1  "显示隐藏文件
 " 涉资文件资源管理器的快捷键 <C-e> => Ctrl+e，该命令覆盖了原本的向下滚动一行的命令
 " <C-e> 向下滚动一行，光标位置不变除非超出屏幕
 " <C-y> 向上滚动一行，光标位置不变除非超出屏幕
-map <silent> <C-e> :NERDTreeToggle<CR>   "<silent>取消回显
+map <silent> <C-e> :NERDTreeToggle<CR>
 
 " 高亮粘贴内容
 Plug 'machakann/vim-highlightedyank'
@@ -166,6 +211,62 @@ let g:mkdp_theme = 'dark'
 nmap <C-s> <Plug>MarkdownPreview "开启预览
 nmap <M-s> <Plug>MarkdownPreviewStop "关闭预览
 nmap <C-p> <Plug>MarkdownPreviewToggle "开启/关闭预览切换
+
+"emmet语法支持
+Plug 'mattn/emmet-vim'
+
+"neoclide/coc.nvim(https://github.com/neoclide/coc.nvim)
+"conquer of completion
+"代码补全插件
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"CocList extensions 列出coc扩展系列已安装插件
+"在下方补充coc系列插件
+let g:coc_global_extensions=[
+    \'coc-json',
+    \'coc-vimlsp',
+    \'coc-tsserver',
+    \'coc-marketplace']
+"启用Tab补全功能
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"启用回车选择补全内容
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+"nvim使用ctrl+空格展开/关闭补全列表，vim快捷键ctrl+@
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+"调用文档
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 call plug#end()
 
