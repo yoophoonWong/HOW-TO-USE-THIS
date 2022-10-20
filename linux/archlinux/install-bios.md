@@ -111,5 +111,13 @@ systemctl enable NetworkManager
 ## 图形界面
 ### 图形界面安装
 ### 图形界面配置
-
-
+设置分辨率[Xrandr](https://wiki.archlinux.org/title/Xrandr)
+窗口效果合成器[picom](https://github.com/yshui/picom) 透明、动画等特效。[介绍](https://www.bilibili.com/video/av470184195/)
+状态栏[polybar](https://github.com/polybar/polybar)
+图形窗口系统[xorg](https://wiki.archlinux.org/title/Xorg),[x.org](https://www.x.org/wiki/)
+图形窗口启动器[xorg-xinit](https://wiki.archlinux.org/title/Xinit)
+平铺式窗口管理器[bspwm](https://github.com/baskerville/bspwm)
+软件启动器[rofi](https://github.com/davatorium/rofi)
+壁纸管理器[feh](https://github.com/derf/feh)
+快捷键管理[sxhkd](https://github.com/baskerville/sxhkd)
+虚拟终端[alacritty](https://github.com/alacritty/alacritty)

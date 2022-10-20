@@ -17,9 +17,10 @@ set autoread       "文件改动后自动读取
 set guifont=Hack_Nerd_Font_Mono:h10
 set encoding=utf-8
 set fileencoding=utf-8
+set backspace=2
 "colorscheme onedarkpro
 winpos 100 100
-set lines=48 columns=210
+set lines=40 columns=210
 
 
 
@@ -46,10 +47,10 @@ set softtabstop=4   "软设置如果tab字符扩展为空格则第一次输入ta
 set shiftwidth=4    "设置自动缩进
 
 
-set nu              "
-set relativenumber  "
-set cursorline      "
-set ruler           "
+set nu              "显示行号
+set relativenumber  "开启相对行号
+set cursorline      "当前行下划线
+set ruler           "启用标尺
 
 "map
 
@@ -66,6 +67,8 @@ nmap <Space> :
 
 "插件安装
 "plug install进行插件的安装@https://github.com/junegunn/vim-plug
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 "修改起始页内容(https://github.com/mhinz/vim-startify)
 "更多信息  :help startify
@@ -152,6 +155,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " markdown预览插件
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+"安装完markdown预览插件之后执行该命令
+":call mkdp#util#install()
 let g:mkdp_auto_start = 0 "1=>打开markdown文件立即打开预览
 let g:mkdp_auto_close = 1 "关闭文件自动关闭预览，0=>关闭文件依然保留预览
 let g:mkdp_refresh_slow = 0 "1=>修改保存或退出插入模式进行预览刷新，0=>实时刷新
@@ -208,9 +213,12 @@ let g:mkdp_filetypes = ['markdown']
 " By default the theme is define according to the preferences of the system
 let g:mkdp_theme = 'dark'
 " 按键映射
-nmap <C-s> <Plug>MarkdownPreview "开启预览
-nmap <M-s> <Plug>MarkdownPreviewStop "关闭预览
-nmap <C-p> <Plug>MarkdownPreviewToggle "开启/关闭预览切换
+" 开启预览
+nmap <C-s> <Plug>MarkdownPreview
+" 关闭预览
+nmap <M-s> <Plug>MarkdownPreviewStop
+" 开启/关闭预览切换
+nmap <C-p> <Plug>MarkdownPreviewToggle
 
 "emmet语法支持
 Plug 'mattn/emmet-vim'
@@ -279,14 +287,17 @@ call plug#end()
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
+set guioptions-=L
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <Bar>
         \set guioptions-=r <Bar>
+        \set guioptions-=L <Bar>
     \else <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
         \set guioptions+=r <Bar>
+        \set guioptions+=L <Bar>
     \endif<CR>
 
 " 设置黑色主题

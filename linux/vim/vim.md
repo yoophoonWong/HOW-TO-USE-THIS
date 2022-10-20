@@ -6,7 +6,7 @@ i/i     =>insert        当前字符/行前
 o/O     =>open a line   当前行前/后增一行
 光标移动
 h/j/k/l =>左下上右 
-H/J/K/L =>最坐下上右   ?????
+H/J/K/L =>最坐下上右
 
 内容删除
 [delete]delete          del键，删除当前字符
