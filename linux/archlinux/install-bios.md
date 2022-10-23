@@ -1,3 +1,5 @@
+
+
 - [Archlinux使用记录](#archlinux使用记录)
   - [系统安装及配置](#系统安装及配置)
     - [系统安装](#系统安装)
@@ -5,6 +7,9 @@
   - [图形界面](#图形界面)
     - [图形界面安装](#图形界面安装)
     - [图形界面配置](#图形界面配置)
+
+
+
 # Archlinux使用记录
 
 ## 系统安装及配置
@@ -110,14 +115,76 @@ systemctl enable NetworkManager
 
 ## 图形界面
 ### 图形界面安装
+设置分辨率  
+- [Xrandr](https://wiki.archlinux.org/title/Xrandr)
+- [arandr]()  
+
+窗口效果合成器
+- [picom](https://github.com/yshui/picom) 透明、动画等特效。[介绍](https://www.bilibili.com/video/av470184195/)
+
+状态栏  
+- [polybar](https://github.com/polybar/polybar)
+图形窗口系统  
+-[xorg](https://wiki.archlinux.org/title/Xorg),[x.org](https://www.x.org/wiki/)  
+
+图形窗口启动器  
+- [xorg-xinit](https://wiki.archlinux.org/title/Xinit)
+
+平铺式窗口管理器  
+- [bspwm](https://github.com/baskerville/bspwm)
+
+软件启动器  
+- [rofi](https://github.com/davatorium/rofi)
+- [dmenu]()
+
+壁纸管理器  
+- [feh](https://github.com/derf/feh)
+- [nitrogen]()
+
+快捷键管理  
+- [sxhkd](https://github.com/baskerville/sxhkd)
+
+虚拟终端
+- [alacritty](https://github.com/alacritty/alacritty)
+- [xfce4-terminal]
+
+AUR包管理软件
+- [paru](https://github.com/Morganamilo/paru)
+
+中文输入法  
+- [fcitx5](https://blog.csdn.net/m0_47627464/article/details/113790309)
+
+显卡驱动
+- [vmware]()  =>  `xf86-video-vmware`
+- [amd]()     =>  `xf86-video-amdgpu`
+- [nvidia]()  =>  `nvidia nvidia-utils`
+
+cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+- [amd]()     =>  `amd-ucode`
+- [intel]()  =>  `intel-ucode`
+
+触摸板驱动
+- [笔记本用]()        =>  `xf86-input-synaptics`
 ### 图形界面配置
-设置分辨率[Xrandr](https://wiki.archlinux.org/title/Xrandr)
-窗口效果合成器[picom](https://github.com/yshui/picom) 透明、动画等特效。[介绍](https://www.bilibili.com/video/av470184195/)
-状态栏[polybar](https://github.com/polybar/polybar)
-图形窗口系统[xorg](https://wiki.archlinux.org/title/Xorg),[x.org](https://www.x.org/wiki/)
-图形窗口启动器[xorg-xinit](https://wiki.archlinux.org/title/Xinit)
-平铺式窗口管理器[bspwm](https://github.com/baskerville/bspwm)
-软件启动器[rofi](https://github.com/davatorium/rofi)
-壁纸管理器[feh](https://github.com/derf/feh)
-快捷键管理[sxhkd](https://github.com/baskerville/sxhkd)
-虚拟终端[alacritty](https://github.com/alacritty/alacritty)
+1. xinit配置  
+配置文件为`~/.xinitrc`，可以从`/etc/X11/xinit/xinitrc`将样例文件复制过来
+- 删除[xterm](https://wiki.archlinux.org/title/Xterm)的设置  
+增加配置
+```sh
+setxkbmap us &  #设置键盘类型
+picom -f &      #设置窗口淡入淡出效果
+exec bspwm      #启动bspwm
+```
+2. bspwm配置  
+配置文件为`~/.config/bspwm/bspwmrc`，可以从`/usr/share/doc/examples/bspwmrc`将样例文件复制过来  
+
+3. sxhkd配置
+配置文件为`~/.config/sxhkd/sxhkdrc`，可以从`/usr/share/doc/examples/sxhkdrc`将样例文件复制过来  
+-super +Return  :模拟终端   [xfce4-terminal]
+
+4. picom配置  
+配置文件`/etc/xdg/picom.conf`，将`vsync = true`注释掉
+
+5. arandr配置  
+- 将显示器分辨率设置正确后保存脚本，给予脚本可执行权限
+- 在`/.xinitrc`中添加`arandr`的脚本路径`$HOME/.screenlayout/display.sh`

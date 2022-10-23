@@ -19,9 +19,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 set backspace=2
 "colorscheme onedarkpro
-winpos 100 100
-set lines=40 columns=210
-
+"winpos 100 100
+"set lines=40 columns=210
+set laststatus=2 "状态栏显示策略
 
 
 set wildmenu        "开启命令模糊输入
@@ -53,7 +53,7 @@ set cursorline      "当前行下划线
 set ruler           "启用标尺
 
 "map
-
+let mapleader="\\"
 
 "imap    input mode map
 imap jk <Esc>
@@ -129,6 +129,9 @@ Plug 'morhetz/gruvbox'
 autocmd vimenter * ++nested colorscheme gruvbox
 set background=dark
 
+"git插件
+Plug 'tpope/vim-fugitive'
+
 " 状态栏
 " 需要安装字体包 如  hack nerd font(https://github.com/ryanoasis/nerd-fonts)
 " 前面设置了字体 set guifont=Hack_Nerd_Font_Mono:h10
@@ -149,10 +152,25 @@ let g:airline_powerline_fonts = 1
 "nmap <leader>8 <Plug>AirlineSelectTab8
 "nmap <leader>9 <Plug>AirlineSelectTab9
 "let g:airline_theme='gruvbox'
+"增加窗口编号
+function! WindowNumber(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
+    return 0
+endfunction
+
+autocmd VimEnter * call airline#add_statusline_func('WindowNumber')
+autocmd VimEnter * call airline#add_inactive_statusline_func('WindowNumber')
 
 " markdown语法插件
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+"将按键Ctrl+Shift+p toc 回车映射到toc生成命令
+nnoremap <c-s-p>toc<cr> :InsertNToc<CR>
+
+
+
 " markdown预览插件
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 "安装完markdown预览插件之后执行该命令
@@ -275,6 +293,10 @@ function! ShowDocumentation()
 endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"快速定位文本插件
+Plug 'easymotion/vim-easymotion'
+let g:EasyMotion_smartcase = 1 "搜索忽略大小写
 
 call plug#end()
 

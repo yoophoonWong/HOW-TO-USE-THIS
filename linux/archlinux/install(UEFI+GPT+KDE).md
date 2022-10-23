@@ -1,3 +1,4 @@
+
 # [Archlinux Install(UEFI+GPT+KDE)](https://www.bilibili.com/video/av898108481/)
 1. 停止reflector服务 禁止自动更新服务器列表
 > systemctl stop reflector.service
