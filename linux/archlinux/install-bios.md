@@ -140,6 +140,7 @@ systemctl enable NetworkManager
 壁纸管理器  
 - [feh](https://github.com/derf/feh)
 - [nitrogen]()
+- [Variety](https://github.com/varietywalls/variety)
 
 快捷键管理  
 - [sxhkd](https://github.com/baskerville/sxhkd)
@@ -165,6 +166,19 @@ cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD
 
 触摸板驱动
 - [笔记本用]()        =>  `xf86-input-synaptics`
+
+鼠标指针
+- [xcursor-themes](https://wiki.archlinux.org/title/Cursor_themes_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+- [lxappearance](https://wiki.archlinux.org/title/LXDE#Cursors)
+- [xcusor-simp1e]()
+文件管理器
+- [dolphiin]()
+
+可视化系统设置软件
+- [systemsetting]()
+
+剪贴版
+- [xfce4-clipman]()
 ### 图形界面配置
 1. xinit配置  
 配置文件为`~/.xinitrc`，可以从`/etc/X11/xinit/xinitrc`将样例文件复制过来
