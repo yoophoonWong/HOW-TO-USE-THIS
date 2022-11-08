@@ -1,5 +1,26 @@
 # VIM
 
+## 模式
+### normal
+### insert
+i
+a
+o
+cc  #when normal mode
+ctrl+o  #execute a command then back to insert mode
+### visual
+v
+V
+ctrl+v
+> o could move cursor to another side of selected
+#### ex
+Q
+### select
+gh
+gH
+ctrl+g  #when visual mode
+### replace
+### terminal
 增加文本
 a/A     =>apend         当前字符/行后
 i/i     =>insert        当前字符/行前 
