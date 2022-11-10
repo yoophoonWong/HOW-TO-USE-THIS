@@ -289,6 +289,8 @@ nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
 
 "emmet语法支持
+"<c-y>, for generate tag list
+"     , for add tag
 Plug 'mattn/emmet-vim'
 
 "neoclide/coc.nvim(https://github.com/neoclide/coc.nvim)
@@ -390,10 +392,19 @@ Plug 'mbbill/undotree'
 "绑定F5为撤销插件快捷键
 noremap <F5> :UndotreeToggle<CR>
 
+"注释插件
+Plug 'preservim/nerdcommenter'
+
+"构建代码
+"Plug 'tpope/vim-dispatch'
+
+    "测试代码
+    "Plug 'janko-m/vim-test'
+
+    "语法检测
+    "Plug 'scrooloose/syntastic'
+    "Plug 'dense-analysis/ale'
 call plug#end()
-
-
-
 
 
 " GVIM的设置
@@ -427,6 +438,4 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 if has('win32')
     set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 endif
-
-
 
