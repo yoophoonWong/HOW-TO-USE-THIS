@@ -118,6 +118,10 @@ nano /etc/pacman.conf
 [archlinuxcn]
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 Server = http://mirrors.163.com/archlinux-cn/$arch
+#添加源之后更新系统并安装archlinuxcn-keyring
+pacman -Syu && pacman -S archlinuxcn-keyring
+#安装玩密钥环之后更新系统密钥
+pacman-key --refresh-keys
 #ctrl+x  按y 再回车保存退出
 
 #设置root密码

@@ -159,6 +159,7 @@ AUR包管理软件
 - [vmware]()  =>  `xf86-video-vmware`
 - [amd]()     =>  `xf86-video-amdgpu`
 - [nvidia]()  =>  `nvidia nvidia-utils`
+- [intel]()   =>  ``
 
 cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 - [amd]()     =>  `amd-ucode`
@@ -167,18 +168,89 @@ cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD
 触摸板驱动
 - [笔记本用]()        =>  `xf86-input-synaptics`
 
+蓝牙
+- [blueman]()
+
+音频
+
 鼠标指针
 - [xcursor-themes](https://wiki.archlinux.org/title/Cursor_themes_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 - [lxappearance](https://wiki.archlinux.org/title/LXDE#Cursors)
 - [xcusor-simp1e]()
 文件管理器
 - [dolphiin]()
+- [ranger]()终端文件管理器
+- [lf]()终端文件管理器，性能更强  
+  预览所依赖的软件
+  - [ctpv](https://github.com/NikitaIvanovV/ctpv)集成工具提供文件的预览功能但是预览各种类型的文件需要安装对应的软件  
+  - [poppler](https://github.com/freedesktop/poppler)提供了 pdftoppm  pdf预览功能
+  - [ffmpegthumbnailer](https://github.com/dirkvdb/ffmpegthumbnailer)视频预览，提供缩略图
+  - 其他的的文件格式预览详见ctpv
 
 可视化系统设置软件
 - [systemsetting]()
 
 剪贴版
 - [xfce4-clipman]()
+字体
+- [中文](wqy-microhei)
+- [英文](fira、nerd)
+浏览器
+- [edge](git clone https://aur.archlinux.org/microsoft-edge-dev-bin.git)
+        cd microsoft-edge-dev-bin
+        makepkg -si
+编辑器
+- [VSCODE](code)
+  出现创建密钥链失败需要安装`paru qtkeychain gnome-keyring`
+输入法
+- [fcitx5](fcitx5-im)https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+office
+- [wps](`paru wps-office`)
+- [wps-fonts](`paru wps-office-font`)
+- [中文字体](`paru wps-office-mui-zh-cn`)
+QQ
+- [deep-wine-qq]()
+  deep-wine依赖deepin-udis86，执行`git clone https://aur.archlinux.org/deepin-udis86.git`克隆软件包，然后进入该目录`makepkg`之后执行`sudo pacman -U deepin-udis86-1.72_4-3-x86_64.pkg.tar.zst`即可解决包依赖问题
+截图
+- [flameshot]()
+- [QQ]()
+代理
+- [clash](clash-for-windows-bin)  [一篇很好的博文](https://zhuanlan.zhihu.com/p/396272999)
+  主要内容是将代理信息写入到`~/.bashrc`中
+```
+set proxy
+export https_proxy=http://127.0.0.1:7890/
+export http_proxy=http://127.0.0.1:7890/
+export no_proxy=localhost,127.0.0.0/8,::1
+export all_proxy=socks://127.0.0.1:7890/
+export ftp_proxy=http://127.0.0.1:7890/
+export HTTP_PROXY=http://127.0.0.1:7890/
+export FTP_PROXY=http://127.0.0.1:7890/
+export ALL_PROXY=socks://127.0.0.1:7890/
+export NO_PROXY=localhost,127.0.0.0/8,::1
+export HTTPS_PROXY=http://127.0.0.1:7890/
+```
+系统备份
+- [dumlicati]()
+- [timeshift]()
+
+显示管理器
+- [lightDM]()
+- [greeter]()
+
+直播录制
+- [obs-studio]()
+
+锁屏
+- [betterlockscreen]()
+  - dim   亮度设置
+  - blur  模糊设置
+  - 使用前 执行命令`betterlockscreen -u "imgPath/Dir" --dim "亮度" --blur "模糊"`
+
+显示器管理
+- [lightdm]()
+git管理
+- [lazygit]()
 ### 图形界面配置
 1. xinit配置  
 配置文件为`~/.xinitrc`，可以从`/etc/X11/xinit/xinitrc`将样例文件复制过来

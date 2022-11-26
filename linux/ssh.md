@@ -1,0 +1,4 @@
+```shll
+sudo apt install openssh-server
+
+```

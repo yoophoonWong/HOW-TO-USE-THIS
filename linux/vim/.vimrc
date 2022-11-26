@@ -30,7 +30,6 @@ set backspace=2
 "set lines=50 columns=winwidth(0)/2
 set laststatus=2 "状态栏显示策略
 
-
 set wildmenu        "开启自动补全增强功能
 set wildmode=longest:list,full  "模糊模式
 
@@ -63,6 +62,8 @@ set ruler           "启用标尺
 set nowrap          "取消自动换行
 set display+=lastline   "长文本行的显示内容
 set linebreak       "单词软换行
+set scrolloff=3     "光标移动到buffer的顶部和底部时保留的行数
+set novisualbell    "取消光标闪动
 
 set spell spelllang=en,cjk          "书写检测
 
@@ -353,6 +354,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_smartcase = 1 "搜索忽略大小写
 
+"行内快速移动
+Plug 'unblevable/quick-scope'
+
 "缩进线
 ":IndentLinesToggle开启或关闭缩进线功能
 Plug 'yggdroot/indentline'
@@ -404,6 +408,8 @@ Plug 'preservim/nerdcommenter'
     "语法检测
     "Plug 'scrooloose/syntastic'
     "Plug 'dense-analysis/ale'
+
+"
 call plug#end()
 
 
