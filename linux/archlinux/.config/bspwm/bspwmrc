@@ -5,6 +5,7 @@
 picom -f &
 xsetroot -cursor_name left_ptr
 feh --randomize --bg-fill ~/Pictures
+fcitx5
 
 $HOME/.config/polybar/launch.sh
 
