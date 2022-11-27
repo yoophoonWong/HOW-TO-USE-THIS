@@ -6,7 +6,7 @@ picom -f &
 xsetroot -cursor_name left_ptr
 feh --randomize --bg-fill ~/Pictures
 fcitx5 &
-
+cfw &
 $HOME/.config/polybar/launch.sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
@@ -20,12 +20,28 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+#==============================================================
+#                       程序管理
+# example 
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
-bspc rule -a Code='^2'
-bspc rule -a "clash for windows"='^10'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
+# 终端模拟器在第2个窗口显示
+bspc rule -a "xfce4-terminal" desktop='^2' focus=on
+# vscode在第3个窗口显示
+bspc rule -a Code desktop='^3' follow=on
+# edge浏览器在第4个窗口显示
+bspc rule -a "Microsoft-edge-dev" desktop='^4' follow=on
+# telegram在第5个窗口显示
+bspc rule -a "telegram-desktop" desktop='^5' follow=on
+# 第6个窗口暂时无功能
+# 网易云音乐在第7个窗口
+bspc rule -a "netease-cloud-music" desktop='^7' follow=on
+# steam在第8个窗口显示
+bspc rule -a "Steam" desktop='^8' follow=on
+# OBS studio在第9个窗口显示
+bspc rule -a "obs" desktop='^9' follow=on
+# CFW在第10个窗口显示
+bspc rule -a "Clash for Windows" desktop='^10' follow=off focus=off
 bspc rule -a Screenkey manage=off
 
 
