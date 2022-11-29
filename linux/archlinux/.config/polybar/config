@@ -70,7 +70,7 @@ font-4 = Font Awesome 5 Free Solid:pixelsize=12;2
 
 modules-left = bspwm i3
 modules-center = xwindow pacman-updates
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery temperature  date
+modules-right = filesystem xkeyboard backlight-acpi pulseaudio memory cpu wlan eth battery temperature  date
 
 separator = |
 tray-position = right
@@ -186,9 +186,22 @@ bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
-inherit = module/xbacklight
+; xbacklight的显示模式为bar形式，占用太宽
+; inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
+use-actual-brightness = true
+enable-scroll = true
+
+format = <ramp> <label>
+format-underline = ${colors.secondary}
+label = %percentage%
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/cpu]
 type = internal/cpu
@@ -277,6 +290,7 @@ type = internal/pulseaudio
 
 ;format-volume = <label-volume> <bar-volume>
 format-volume = <label-volume>
+format-volume-underline = ${colors.secondary}
 label-volume = ﱛ %percentage%%
 label-volume-foreground = ${root.foreground}
 
