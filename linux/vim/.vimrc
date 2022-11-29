@@ -413,14 +413,29 @@ Plug 'preservim/nerdcommenter'
 call plug#end()
 
 
-" GVIM的设置
-" 切换GVIM的菜单、工具栏及滚动条的显示 快捷键F2
-set guioptions-=b
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+
+" 设置黑色主题
+"set guioptions+=d
+
+
+"下面是对跨平台的兼容性设置
+
+"如果是windows则将gvim使用的shell设置为powershell
+"New-Item -Path 'c:\temp\New Folder' -ItemType Directory            #创建文件夹
+"New-Item -Path 'c:\temp\New Folder\newFile.txt' -ItemType File     #创建文件
+"Remove-Item ItemName [-Force]                                      #删除文件或文件夹
+if has('win32')
+    echo "windows兼容设置启用"
+    "windows平台将终端设置为powershell
+    set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    " GVIM的设置
+    " 切换GVIM的菜单、工具栏及滚动条的显示 快捷键F2
+    set guioptions-=b
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=b <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <Bar>
@@ -433,15 +448,10 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=r <Bar>
         \set guioptions+=L <Bar>
     \endif<CR>
-
-" 设置黑色主题
-"set guioptions+=d
-
-"如果是windows则将gvim使用的shell设置为powershell
-"New-Item -Path 'c:\temp\New Folder' -ItemType Directory            #创建文件夹
-"New-Item -Path 'c:\temp\New Folder\newFile.txt' -ItemType File     #创建文件
-"Remove-Item ItemName [-Force]                                      #删除文件或文件夹
-if has('win32')
-    set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+else
+    echo "arch兼容设置启用"
+    let fcitx5state=system("fcitx5-remote")
+    autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c " 退出插入模式时禁用输入法，并保存状态
+    autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
 endif
 
