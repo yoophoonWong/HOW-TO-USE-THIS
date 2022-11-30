@@ -425,7 +425,7 @@ call plug#end()
 "New-Item -Path 'c:\temp\New Folder\newFile.txt' -ItemType File     #创建文件
 "Remove-Item ItemName [-Force]                                      #删除文件或文件夹
 if has('win32')
-    "echo "windows兼容设置启用"
+    echomsg "windows兼容设置启用"
     "windows平台将终端设置为powershell
     set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
     " GVIM的设置
@@ -449,8 +449,8 @@ if has('win32')
         \set guioptions+=L <Bar>
     \endif<CR>
 else
-    "echo "arch兼容设置启用"
-    let fcitx5state=system("fcitx5-remote")
+    echomsg "arch兼容设置启用"
+    let g:fcitx5state=system("fcitx5-remote")
     autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c " 退出插入模式时禁用输入法，并保存状态
     autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
 endif
