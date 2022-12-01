@@ -12,7 +12,6 @@
 ":profile stop 或 退出vim
 
 
-
 "help option-list   "查看帮助选项列表
 "编辑器设置
 set nocompatible    "设置不兼容VI
@@ -29,6 +28,7 @@ set backspace=2
 "winpos 100 100
 "set lines=50 columns=winwidth(0)/2
 set laststatus=2 "状态栏显示策略
+set statusline=%F   "被airline设置代替
 
 set wildmenu        "开启自动补全增强功能
 set wildmode=longest:list,full  "模糊模式
@@ -93,11 +93,14 @@ let mapleader="\\"
 "imap    input mode map
 imap jk <Esc>
 
-
-
 "nmap    normal mode map
 nmap <Space> :
-
+"查找居中显示并取消折叠
+nnoremap n nzzzv
+nnoremap N Nzzzv
+"切换buffer
+nnoremap <C-tab> :bn<CR>
+nnoremap <C-s-tab> :bp<CR>
 
 "插件安装
 "plug install进行插件的安装@https://github.com/junegunn/vim-plug
@@ -187,9 +190,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='simple'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'short_path'
 " 使用powerline字体，这样可以显示特殊字符
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#branch#format = 2
+let g:airline_section_c = '%F %R'
+let g:airline_section_c_only_filename = 0
+let g:airline_stl_path_style = 'short'
 "nmap <leader>1 <Plug>AirlineSelectTab1
 "nmap <leader>2 <Plug>AirlineSelectTab2
 "nmap <leader>3 <Plug>AirlineSelectTab3
@@ -207,7 +216,6 @@ function! WindowNumber(...)
     call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
     return 0
 endfunction
-
 autocmd VimEnter * call airline#add_statusline_func('WindowNumber')
 autocmd VimEnter * call airline#add_inactive_statusline_func('WindowNumber')
 
@@ -425,7 +433,7 @@ call plug#end()
 "New-Item -Path 'c:\temp\New Folder\newFile.txt' -ItemType File     #创建文件
 "Remove-Item ItemName [-Force]                                      #删除文件或文件夹
 if has('win32')
-    echomsg "windows兼容设置启用"
+    "echomsg "windows兼容设置启用"
     "windows平台将终端设置为powershell
     set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
     " GVIM的设置
@@ -449,9 +457,11 @@ if has('win32')
         \set guioptions+=L <Bar>
     \endif<CR>
 else
-    echomsg "arch兼容设置启用"
+    "echomsg "arch兼容设置启用"
     let g:fcitx5state=system("fcitx5-remote")
-    autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c " 退出插入模式时禁用输入法，并保存状态
-    autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
+    " 退出插入模式时禁用输入法，并保存状态
+    autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c 
+    " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
+    autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif 
 endif
 
