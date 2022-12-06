@@ -25,4 +25,4 @@ if [[ $(tty) == "/dev/tty1" ]]; then
     startx
 fi
 
-PS1='[\u@\h \W]\$ '
+PS1='[\e[36m\e[0m \u@\h:\w  \e[36m\e[0m \e[32m\e[0m \d  \e[36m\e[0m \e[32m\e[0m \t  \e[36m\e[0m \e[32mגּ\e[0m\!]\n\$ '

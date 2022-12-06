@@ -159,6 +159,7 @@ AUR包管理软件
 - [vmware]()  =>  `xf86-video-vmware`
 - [amd]()     =>  `xf86-video-amdgpu`
 - [nvidia]()  =>  `nvidia nvidia-utils`
+             prime-run software 应用程序启用独显
 - [intel]()   =>  ``
 
 cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))

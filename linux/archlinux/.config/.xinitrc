@@ -50,6 +50,6 @@ fi
 
 
 # setxkbmap us &
-betterlockscreen -l dim
+# betterlockscreen -l dim
 picom -f &
 exec bspwm
