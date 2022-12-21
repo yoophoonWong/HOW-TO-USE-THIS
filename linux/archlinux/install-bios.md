@@ -178,6 +178,7 @@ cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD
 - [xcursor-themes](https://wiki.archlinux.org/title/Cursor_themes_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 - [lxappearance](https://wiki.archlinux.org/title/LXDE#Cursors)
 - [xcusor-simp1e]()
+
 文件管理器
 - [dolphiin]()
 - [ranger]()终端文件管理器
@@ -190,31 +191,38 @@ cpu微码[Microcode](https://wiki.archlinux.org/title/Microcode_(%E7%AE%80%E4%BD
 
 可视化系统设置软件
 - [systemsetting]()
+- [bottom]()终端系统资源监视器
 
 剪贴版
 - [xfce4-clipman]()
 字体
 - [中文](wqy-microhei)
 - [英文](fira、nerd)
+
 浏览器
 - [edge](git clone https://aur.archlinux.org/microsoft-edge-dev-bin.git)
         cd microsoft-edge-dev-bin
         makepkg -si
+
 编辑器
 - [VSCODE](code)
   出现创建密钥链失败需要安装`paru qtkeychain gnome-keyring`
+
 输入法
 - [fcitx5](fcitx5-im)https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 office
 - [wps](`paru wps-office`)
 - [wps-fonts](`paru wps-office-font`)
 - [中文字体](`paru wps-office-mui-zh-cn`)
+
 QQ
 - [deep-wine-qq]()
   deep-wine依赖deepin-udis86，执行`git clone https://aur.archlinux.org/deepin-udis86.git`克隆软件包，然后进入该目录`makepkg`之后执行`sudo pacman -U deepin-udis86-1.72_4-3-x86_64.pkg.tar.zst`即可解决包依赖问题
+
 截图
 - [flameshot]()
-- [QQ]()
+- [QQ]()  
+
 代理
 - [clash](clash-for-windows-bin)  [一篇很好的博文](https://zhuanlan.zhihu.com/p/396272999)
   主要内容是将代理信息写入到`~/.bashrc`中
