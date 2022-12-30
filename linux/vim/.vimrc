@@ -176,14 +176,14 @@ map <silent> <C-e> :NERDTreeToggle<CR>
 Plug 'machakann/vim-highlightedyank'
 
 " gruvbox色彩主题
-"Plug 'morhetz/gruvbox'
-"autocmd vimenter * ++nested colorscheme gruvbox
-"set background=dark
+Plug 'morhetz/gruvbox'
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
 
 " nord-vim色彩主题
-Plug 'arcticicestudio/nord-vim'
-autocmd vimenter * ++nested colorscheme nord
-set background=dark
+"Plug 'arcticicestudio/nord-vim'
+"autocmd vimenter * ++nested colorscheme nord
+" set background=dark
 
 "git插件
 Plug 'tpope/vim-fugitive'
