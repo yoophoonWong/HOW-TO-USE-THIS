@@ -1,18 +1,15 @@
 
-  * [1、下载git](#1、下载git)
-  * [2、配置ssh密钥](#2、配置ssh密钥)
-  * [3、配置git](#3、配置git)
-  * [4、在gitee里面设置公钥](#4、在gitee里面设置公钥)
-  * [5、克隆项目](#5、克隆项目)
-  * [6、提交项目](#6、提交项目)
-- [git add](#git-add)
-  - [6、提交项目](#6提交项目)
-- [git commit -m "comment" //提交  附带信息](#git-commit--m-comment-提交--附带信息)
-  - [6、已有空库，推送项目上去](#6已有空库推送项目上去)
-  - [7、分支相关](#7分支相关)
-  - [8、查看当前文件夹的仓库](#8查看当前文件夹的仓库)
-  - [9、克隆仓库到非空文件夹](#9克隆仓库到非空文件夹)
-  - [5、克隆项目](#5克隆项目)
+- [1、下载git](#1下载git)
+- [2、配置ssh密钥](#2配置ssh密钥)
+- [3、配置git](#3配置git)
+- [4、在gitee里面设置公钥](#4在gitee里面设置公钥)
+- [5、查看项目状态](#5查看项目状态)
+- [6、提交项目](#6提交项目)
+- [6、已有空库，推送项目上去](#6已有空库推送项目上去)
+- [7、分支相关](#7分支相关)
+- [8、查看当前文件夹的仓库](#8查看当前文件夹的仓库)
+- [9、克隆仓库到非空文件夹](#9克隆仓库到非空文件夹)
+- [5、克隆项目](#5克隆项目)
 
 ### 1、下载git
 
@@ -33,20 +30,30 @@ gitee→设置→安全设置→ssh公钥
 将第2步生成的公钥复制到gitee
 测试设置状态
 ssh -T git@github.com
+```powershell
+#验证成功
+PS D:\Github\how-to-use-this> ssh -T git@github.com
+Hi yoophoon! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 ---
 ### 5、查看项目状态
-git status
-cat ./.git/config   效果类似于 git config --list
+```powershell
+git status  
+cat ./.git/config  
+#效果类似于 git config --list
 git add 
+```
+
 ---
 ### 6、提交项目
 git commit -m "comment" //提交  附带信息
+
 ---
 ### 6、已有空库，推送项目上去  
 `git init` //初始化仓库  
-github取消了https的验证方式
-`git remote rm origin` //移除origin远程仓库
+github取消了https的验证方式  
+`git remote rm origin` //移除origin远程仓库  
 `git remote add origin` "仓库地址"  //添加远程仓库  
 `git push --set-upstream origin master` //首次推送设置
 `git push -u origin` "仓库分支"  //推送 推送地址 推送分支  
@@ -61,11 +68,11 @@ github取消了https的验证方式
 `git remote show origin` //显示更多的信息  
 
 ### 9、克隆仓库到非空文件夹  
-```s
-//1、克隆仓库到任意文件夹
+```powershell
+#1、克隆仓库到任意文件夹
 git clone --no-checkout https://git.oschina.NET/NextApp/platform.git anyFolder
-//2、复制`.git`到目标非空文件夹
-//3、设置git信息 注意查看仓库地址
+#2、复制`.git`到目标非空文件夹
+#3、设置git信息 注意查看仓库地址
 git reset --hard HEAD
 ```
 
