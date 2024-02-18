@@ -26,3 +26,21 @@ docker run -d --name ariang \
 #but those file needs copy from this container
 #run docker exec -it container bash and copy those files
 #
+
+
+docker run -d --name ariang \
+  -p 80:80 \
+  -p 443:443 \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e ENABLE_AUTH=true \
+  -e RPC_SECRET=Hello \
+  -e ARIA2_SSL=false \
+  -e ARIA2_USER=user \
+  -e ARIA2_PWD=password \
+  -e ARIA2_EXTERNAL_PORT=443 \
+  -e CADDY_LOG_LEVEL=ERROR \
+  -v /path/to/aria2Data:/data \
+  -v /app/.cache:/app/.cache \
+  -v /path/to/aria2conf:/app/conf \
+  wahyd4/aria2-ui
