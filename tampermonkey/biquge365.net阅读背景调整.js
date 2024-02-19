@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         biquge365.net阅读背景调整
-// @namespace    http://tampermonkey.net/
-// @version      2024-02-16
+// @namespace    https://github.com/yoophoon
+// @version      2024-02-19
 // @updateURL    https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
 // @downloadURL  https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
 // @description  改善笔趣阁的阅读体验
@@ -17,6 +17,7 @@
 // ==/UserScript==
 
 (function () {
+    setUserCSS('userCSS')
     //window.onload = function () {
     //隐藏功能菜单
     document.querySelector('header.head').style.display = 'none'
@@ -97,12 +98,12 @@ function getChaptersInfo(bookID, currentChapter, parentNode, nodeNum) {
     const chaptersURL = `https://www.biquge365.net/newbook/${bookID}/`
     const parser = new DOMParser()
     const currentChapterStyle = {
-        li: 'padding:1px;padding-left:10px;border-left:4px solid #666666;margin:2px',
-        a: 'color:#cc9966;border-bottom:1px solid #cc9966'
+        li: 'width:100%;margin:4px',
+        a: 'color:#cc9966;border-bottom:1px solid #cc9966;padding:1px;padding-left:10px;border-left:4px solid #666666;margin-left:8px'
     }
     const otherChaptersStyle = {
-        li: 'padding:1px;padding-left:10px;border-left:2px solid #666666;margin:2px',
-        a: 'color:#cc9966'
+        li: 'width:100%;margin:2px',
+        a: 'color:#cc9966;padding:1px;padding-left:10px;border-left:2px solid #666666'
     }
     fetch(chaptersURL)
         .then(response => response.text())
@@ -113,6 +114,11 @@ function getChaptersInfo(bookID, currentChapter, parentNode, nodeNum) {
             let newestChapters = chapterPage.querySelectorAll(" ul.xinchapter > li")
             for (let i = 0; i < (newestChapters.length > nodeNum ? nodeNum : newestChapters.length); i++) {
                 parentNode.appendChild(newestChapters[i])
+                if (i == ((newestChapters.length = nodeNum ? nodeNum : newestChapters.length) - 1)) {
+                    let hrIndirectory = document.createElement('hr')
+                    //hrIndirectory.style.cssText = 'background-color:#999444;height:1px;border:none'
+                    parentNode.appendChild(hrIndirectory)
+                }
                 setStyle(newestChapters[i], currentChapter, currentChapterStyle, otherChaptersStyle)
             }
             //处理前后章节
@@ -156,8 +162,38 @@ function setStyle(Node, currentChapter, currentStyle, otherStyle) {
     //如果是最新章节的处理
     if (currentChapter == chapterInfo.href) {
         Node.style.cssText = currentStyle.li
-        Node.style.margin = '10px'
         chapterInfo.style.cssText = currentStyle.a
+        chapterInfo.href = '#'
     }
+    Node.onmouseenter = function () {
+        Node.style.cssText = currentStyle.li
+    }
+    Node.onmouseleave = function () {
+        Node.style.cssText = otherStyle.li
+    }
+}
+
+/**
+ * 
+ * @param {string} userCSS 用户样式表
+ * @link https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule#function_to_add_a_stylesheet_rule
+ * @description 将用户样式表插入到DOM对象中通过sheet属性生效，无法直接在开发者工具->元素（HTML）中直接查看
+ */
+function setUserCSS(userCSS) {
+    let styleEl = document.createElement('style')
+    document.head.appendChild(styleEl)
+    //类似documen.style.cssText
+    //userCSS.sheet.addRule('.userCSS::after', 'color:green')
+    styleEl.sheet.insertRule(`hr{
+        border: none;
+        border-top: 2px double #cc9966;
+        color:#333;
+        overflow: visible;
+        text-align: center;
+        height: 2px;
+        margin-top:11px;
+        margin-bottom:8px;
+    }`)
+    styleEl.sheet.insertRule(`hr::after {color:#666666;background-color: #cc9966;content:'最新章节↑§↓最近章节';padding:0 4px;position:relative;font-size:12px;top:-13px;border-radius:6px}`)
 }
 
