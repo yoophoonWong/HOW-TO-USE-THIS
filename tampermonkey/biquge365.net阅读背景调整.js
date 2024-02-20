@@ -1,22 +1,25 @@
 // ==UserScript==
 // @name         biquge365.net阅读背景调整
 // @namespace    https://github.com/yoophoon
+// @copyright    2024, yoophoon (https://github.com/yoophoon)
 // @version      2024-02-19
-// @updateURL    https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
-// @downloadURL  https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
 // @description  改善笔趣阁的阅读体验
+// @icon         https://www.biquge365.net/style/favicon.ico
+// @grant        unsafeWindow
+// @grant        GM_addStyle
 // @author       yoophoon
 // @homepage     https://github.com/yoophoon
-// @copyright    2024, yoophoon (https://github.com/yoophoon)
-// @license      MIT
 // @match        https://www.biquge365.net/chapter/*
-// @icon         https://www.biquge365.net/style/favicon.ico
-// @grant        none
 // @run-at document-end
-
+// @updateURL    https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
+// @downloadURL  https://raw.githubusercontent.com/yoophoon/HOW-TO-USE-THIS/main/tampermonkey/biquge365.net%E9%98%85%E8%AF%BB%E8%83%8C%E6%99%AF%E8%B0%83%E6%95%B4.js
+// @license      MIT
 // ==/UserScript==
 
+
 (function () {
+    //GM_addStyle对脚本无效单纯插入一段CSS验证该函数的功能性
+    GM_addStyle(".uselessStyle,.usefulStyle{height:150px !important}")
     setUserCSS('userCSS')
     //window.onload = function () {
     //隐藏功能菜单
@@ -98,7 +101,7 @@ function getChaptersInfo(bookID, currentChapter, parentNode, nodeNum) {
     const chaptersURL = `https://www.biquge365.net/newbook/${bookID}/`
     const parser = new DOMParser()
     const currentChapterStyle = {
-        li: 'width:100%;margin:4px',
+        li: 'width:100%;margin:2px;margin-left:4px',
         a: 'color:#cc9966;border-bottom:1px solid #cc9966;padding:1px;padding-left:10px;border-left:4px solid #666666;margin-left:8px'
     }
     const otherChaptersStyle = {

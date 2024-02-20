@@ -1,14 +1,18 @@
 // ==UserScript==
-// @name         hifini.com获取歌曲下载链接
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  get music!
+// @name         hifini.com歌曲助手
+// @namespace    https://github.com/yoophoon
+// @version      2024-02-16
+// @description  获取
 // @author       yoophoon
 // @match        https://www.hifini.com/thread-*
 // @icon         https:/www.hifini.com/view/img/logo.png
 // @grant        none
 // ==/UserScript==
 
+
+/**
+ * 网站改版了且响应速度很慢 搁置该脚本的编写
+ */
 (function () {
     'use strict';
     //窗体加载完成 执行的函数
