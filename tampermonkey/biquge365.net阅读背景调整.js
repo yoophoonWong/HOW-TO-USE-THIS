@@ -19,7 +19,7 @@
 
 (function () {
     //GM_addStyle对脚本无效单纯插入一段CSS验证该函数的功能性
-    GM_addStyle(".uselessStyle,.usefulStyle{height:150px !important}")
+    //GM_addStyle(".uselessStyle,.usefulStyle{height:150px !important}")
     setUserCSS('userCSS')
     //window.onload = function () {
     //隐藏功能菜单
