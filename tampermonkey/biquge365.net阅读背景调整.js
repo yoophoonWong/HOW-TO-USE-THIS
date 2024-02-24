@@ -21,7 +21,6 @@
     //GM_addStyle对脚本无效单纯插入一段CSS验证该函数的功能性
     //GM_addStyle(".uselessStyle,.usefulStyle{height:150px !important}")
     setUserCSS('userCSS')
-    //window.onload = function () {
     //隐藏功能菜单
     document.querySelector('header.head').style.display = 'none'
     //隐藏报错按钮 底部和底部都有这种功能用for循环处理掉
@@ -86,7 +85,6 @@
     sideBar.appendChild(directory)
     document.body.appendChild(sideBar)
     getChaptersInfo(bookID, document.location.href, sideBar, 5)
-    //}
 })();
 
 
