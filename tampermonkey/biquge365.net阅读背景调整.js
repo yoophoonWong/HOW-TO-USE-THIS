@@ -22,7 +22,7 @@
     //GM_addStyle(".uselessStyle,.usefulStyle{height:150px !important}")
     setUserCSS('userCSS')
     let webSelfScript = document.head.querySelectorAll('script')
-    for (i = 0; i < webSelfScript.length; i++) {
+    for (let i = 0; i < webSelfScript.length; i++) {
         webSelfScript[i].remove()
     }
     document.body.style.backgroundColor = '#999999'
@@ -191,26 +191,32 @@ function preloadNextChapters(chapterPanel, contentPanel, allChaptersInfo, nodeNu
                         .then(resText => {
                             let chapterPage = parser.parseFromString(resText, 'text/html')
                             data[indexOfCurrentChapter + i][2] = setContent(data[indexOfCurrentChapter + i][1].split('/')[5].split('.')[0], chapterPage)
-                            contentPanel.appendChild(data[indexOfCurrentChapter + i][2])
+                            //contentPanel.appendChild(data[indexOfCurrentChapter + i][2])
                         })
                 }
             }
         })
         allChaptersInfo.then(data => {
             let theFirstChapterInChapterPanel = contentPanel.querySelector('.content')
+            //let allChaptersInChapterPanel = contentPanel.querySelectorAll('.content')
+            let indexOfNextChapter = parseInt(window.location.href.split('#')[2]) + 1
             //let currentChapterUrl = `https://www.biquge365.net/chapter/${window.location.href.split('/')[4]}/${theFirstChapterInChapterPanel.getAttribute('id')}.html`
-
+            for (let i = indexOfNextChapter; i < (indexOfNextChapter - 1 + parseInt(nodeNum / 2) < data.length ? indexOfNextChapter - 1 + parseInt(nodeNum / 2) : data.length); i++) {
+                if (data[indexOfNextChapter][3] == false && data[indexOfNextChapter][2] != 1) {
+                    contentPanel.appendChild(data[indexOfNextChapter][2])
+                    data[indexOfNextChapter][3] = true
+                }
+                if (data[indexOfNextChapter][3] == true) break
+            }
             if (contentPanel.scrollTop - theFirstChapterInChapterPanel.scrollHeight > 0) {
-                let indexOfCurrentChapter = parseInt(window.location.href.split('#')[2]) + 1
-                if (indexOfCurrentChapter >= data.length) return
-                let chapterID = data[indexOfCurrentChapter][1].split('/')[5].split('.')[0]
-                window.location.href = `${window.location.href.split('#')[0]}#${chapterID}#${indexOfCurrentChapter}`
+                if (indexOfNextChapter >= data.length) return
+                //console.log(data)
+                let chapterID = data[indexOfNextChapter][1].split('/')[5].split('.')[0]
+                window.location.href = `${window.location.href.split('#')[0]}#${chapterID}#${indexOfNextChapter}`
                 setChapterPanel(chapterPanel, chapterID, allChaptersInfo, nodeNum)
                 theFirstChapterInChapterPanel.remove()
             }
-
         })
-
     });
 }
 
@@ -230,10 +236,11 @@ async function getAllChaptersInfo(bookID) {
             let chapterPage = parser.parseFromString(resText, 'text/html')
             let chapterLi = chapterPage.querySelectorAll(" ul.info > li> a")
             for (i = 0; i < chapterLi.length; i++) {
-                let tempInfo = new Array(3)
+                let tempInfo = new Array(4)
                 tempInfo[0] = chapterLi[i].getAttribute('title')
                 tempInfo[1] = 'https://www.biquge365.net' + chapterLi[i].getAttribute('href')
                 tempInfo[2] = 1
+                tempInfo[3] = false
                 allChaptersInfo.push(tempInfo)
             }
         })
