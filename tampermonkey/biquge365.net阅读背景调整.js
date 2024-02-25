@@ -2,7 +2,7 @@
 // @name         biquge365.net阅读背景调整
 // @namespace    https://github.com/yoophoon
 // @copyright    2024, yoophoon (https://github.com/yoophoon)
-// @version      2024-02-19
+// @version      2024-02-25
 // @description  改善笔趣阁的阅读体验
 // @icon         https://www.biquge365.net/style/favicon.ico
 // @grant        unsafeWindow
