@@ -196,6 +196,7 @@ function preloadNextChapters(chapterPanel, contentPanel, allChaptersInfo, nodeNu
                 }
             }
         })
+        //TODO 需要优化加载速度和加载完成检测
         allChaptersInfo.then(data => {
             let theFirstChapterInChapterPanel = contentPanel.querySelector('.content')
             //let allChaptersInChapterPanel = contentPanel.querySelectorAll('.content')
@@ -212,6 +213,7 @@ function preloadNextChapters(chapterPanel, contentPanel, allChaptersInfo, nodeNu
                 if (indexOfNextChapter >= data.length) return
                 //console.log(data)
                 let chapterID = data[indexOfNextChapter][1].split('/')[5].split('.')[0]
+                document.head.querySelector('title').innerText = `${document.head.querySelector('title').innerText.split('_')[0]}_${data[indexOfNextChapter][0]}`
                 window.location.href = `${window.location.href.split('#')[0]}#${chapterID}#${indexOfNextChapter}`
                 setChapterPanel(chapterPanel, chapterID, allChaptersInfo, nodeNum)
                 theFirstChapterInChapterPanel.remove()
