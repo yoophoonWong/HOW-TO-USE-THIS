@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @property --FontSize {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: 60px;
+        }
+
+        @property --LineHeight {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: 100px;
+        }
+
+        .timezone {
+            height: var(--LineHeight);
+            display: flex;
+            justify-content: center;
+        }
+
+        .seprate {
+            font-size: var(--FontSize);
+            line-height: var(--LineHeight);
+        }
+
+        .card {
+            width: 80px;
+            height: 100%;
+            margin: 0px 2px;
+            border: 1px solid #666666;
+            position: relative;
+
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                border: 1px solid #cc6699;
+                border-left: none;
+                border-right: none;
+                position: relative;
+                top: 50%;
+                z-index: 999;
+            }
+        }
+
+        .timeNum {
+            position: absolute;
+            width: 100%;
+            height: calc(var(--LineHeight) / 2);
+            line-height: var(--LineHeight);
+            overflow: hidden;
+            text-align: center;
+            font-size: var(--FontSize);
+        }
+
+        .current.bottom {
+            top: 50%;
+            line-height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timezone">
+        <div class="card hours1">
+            <div class="timeNum current top">1</div>
+            <div class="timeNum current bottom">1</div>
+            <div class="timeNum next top"></div>
+            <div class="timeNum next bottom"></div>
+        </div>
+        <div class="card hours2">
+            <div class="timeNum current top"></div>
+            <div class="timeNum current bottom"></div>
+            <div class="timeNum next top"></div>
+            <div class="timeNum next bottom"></div>
+        </div>
+        <div class="seprate">:</div>
+        <div class="card minutes1">
+            <div class="timeNum current top"></div>
+            <div class="timeNum current bottom"></div>
+            <div class="timeNum next top"></div>
+            <div class="timeNum next bottom"></div>
+        </div>
+        <div class="card minutes2">
+            <div class="timeNum current top"></div>
+            <div class="timeNum current bottom"></div>
+            <div class="timeNum next top"></div>
+            <div class="timeNum next bottom"></div>
+        </div>
+        <div class="seprate">:</div>
+        <div class="card second1">
+            <div class=" timeNum current top"></div>
+            <div class=" timeNum current bottom"></div>
+            <div class=" timeNum next top"></div>
+            <div class=" timeNum next bottom"></div>
+        </div>
+        <div class="card second2">
+            <div class="timeNum current top"></div>
+            <div class="timeNum current bottom"></div>
+            <div class="timeNum next top"></div>
+            <div class="timeNum next bottom"></div>
+        </div>
+    </div>
+</body>
+<script>
+    
+
+</script>
+
+</html>

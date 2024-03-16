@@ -1,3 +1,8 @@
 工作交接.md
 test.md
 .vscode
+test.js
+.gitignore
+package.json
+node_modules
+package-lock.json

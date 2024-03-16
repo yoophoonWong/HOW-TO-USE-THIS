@@ -7,4 +7,12 @@
 管理员启动PowerShell执行命令`set-executionpolicy remotesigned` 选择是  **Y** 即可  
 
 # 更改PowerShell的字符编码
-$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8nobom' //设置字符集为UTF-8
+`$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8nobom'`    //设置字符集为UTF-8  
+`$PSDefaultParameterValues['*:Encoding'] = 'utf8'`                //更改具有 Encoding 参数的所有 cmdlet 的默认编码  
+常见字符集:`chcp 936 GBK`和`chcp 65001 utf-8`                     //chcp 65001  
+
+# 调用本地程序并获取相关信息
+$p = Start-Process "./montage.exe" -ArgumentList "-background '#336699' -geometry +4+4 mpv-shot0001.jpg mpv-shot0002.jpg montage.jpg" -PassThru
+
+$p.ExitCode
+$p.HasExited

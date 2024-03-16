@@ -23,3 +23,7 @@ npm config ls -l
 //查看全局模块的安装路径
 npm root -g
 ```
+
+package.json  
+`$env:NODE_OPTIONS="--openssl-legacy-provider"  //启用 OpenSSL 3.0 旧版提供程序。`  
+解决[Access to process.binding(‘http_parser‘) is deprecated.](https://blog.csdn.net/Januea/article/details/131225739)报错

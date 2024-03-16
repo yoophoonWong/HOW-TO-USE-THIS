@@ -10,3 +10,7 @@
 2. 编写配置文件
 3. 自定义快捷键
 4. 配置插件
+    ### 自动加载脚本
+    下面两个路劲会自动加载  
+    `~~\portable_config\scripts\`  
+    `~~\portable_config\script-opts\`  

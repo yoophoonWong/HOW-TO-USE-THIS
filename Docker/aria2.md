@@ -44,3 +44,20 @@ docker run -d --name ariang \
   -v /app/.cache:/app/.cache \
   -v /path/to/aria2conf:/app/conf \
   wahyd4/aria2-ui
+
+docker run -d \
+    --name aria2-pro \
+    --restart unless-stopped \
+    --log-opt max-size=1m \
+    -e PUID=$UID \
+    -e PGID=$GID \
+    -e UMASK_SET=022 \
+    -e RPC_SECRET=yoophoon \
+    -e RPC_PORT=6800 \
+    -p 6800:6800 \
+    -e LISTEN_PORT=6888 \
+    -p 6888:6888 \
+    -p 6888:6888/udp \
+    -v $PWD/aria2-config:/config \
+    -v $PWD/Downloads:/downloads \
+    p3terx/aria2-pro
