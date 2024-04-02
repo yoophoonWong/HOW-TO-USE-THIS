@@ -39,7 +39,9 @@
 
     //创建侧栏显示最一定数量的最新章节和当前章节的前后章节
     let sideBar = document.createElement('ul')
-    sideBar.style.cssText = 'width:250px;position:fixed;top:20%;left:calc(50% - 750px);box-sizing:border-box;overflow:hidden;'
+    sideBar.classList.add('sideBarPanel')
+    // sideBar.style.cssText = 'display:none;'
+    // sideBar.style.cssText = 'display:block;width:250px;position:fixed;top:20%;left:calc(50% - 750px);box-sizing:border-box;overflow:hidden;'
     //设置鼠标进入退出效果
     sideBar.onmouseenter = function () {
         sideBar.style.backgroundColor = '#666666'
@@ -116,17 +118,40 @@ function setUserCSS(userCSS) {
         line-height:0px;}
     `)
     styleEl.sheet.insertRule(`#contentPanel{
-        width: 1000px;
         height:100vh;
         background-color: #666666;
         margin-top: 0;
         padding-top: 0;
         margin: 0 auto;
-        overflow: scroll;}`
-    )
+        overflow: scroll;}
+    `)
     styleEl.sheet.insertRule(`#contentPanel::-webkit-scrollbar{
-        display:none;}`
-    )
+        display:none;
+    }`)
+    styleEl.sheet.insertRule(`.sideBarPanel{
+        display:none;
+    }`)
+    styleEl.sheet.insertRule(`@media(min-width:1500px){
+        ul.sideBarPanel{
+            display:block;
+            width:250px;
+            position:fixed;
+            top:20%;
+            left:calc(50% - 750px);
+            box-sizing:border-box;
+            overflow:hidden;
+        }
+    }`)
+    styleEl.sheet.insertRule(`@media(min-width:1000px){
+        div#contentPanel{
+            width:1000px;
+            height:100vh;
+            background-color: #666666;
+            margin-top: 0;
+            padding-top: 0;
+            margin: 0 auto;
+            overflow: scroll;
+    }`)
 }
 
 /**
